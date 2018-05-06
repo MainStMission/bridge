@@ -1,14 +1,30 @@
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
-import mocks from './mocks';
+import resolvers from './resolvers';
 
-const typeDefs = `
+const typeDefs = gql`
 type Query {
-  testString: String
+  household(city: String, householdName: String,  state: String, street: String, zip: String): Household
+  allHouseholds: [Household]
 }
-`;
+
+type Household {
+  city: String
+  householdName: String
+  state: String
+  street: String
+  zip: String
+  neighbors: [Neighbor]
+}
+
+type Neighbor {
+  firstName: String
+  lastName: String
+  household: Household
+}`
+;
 
 const schema = makeExecutableSchema({ typeDefs });
 
-addMockFunctionsToSchema({ schema, mocks });
+makeExecutableSchema({ typeDefs, resolvers })
 
 export default schema;
