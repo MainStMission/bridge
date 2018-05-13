@@ -1,5 +1,7 @@
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+const { gql } = require("apollo-server");
 import resolvers from './resolvers';
+
 
 const typeDefs = gql`
 type Query {

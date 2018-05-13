@@ -19,6 +19,8 @@ const db = new Sequelize({
 const HouseholdModel = db.define('household', {
     createdAt: false,
     updatedAt: false,
+    createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
+    updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
     householdName: { type: Sequelize.STRING, field: 'household_name'},
     name: {type: Sequelize.STRING},
     street: {type: Sequelize.STRING},
@@ -26,8 +28,6 @@ const HouseholdModel = db.define('household', {
     city: { type: Sequelize.STRING},
     state: { type: Sequelize.STRING},
     zip: {type: Sequelize.STRING},
-    createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
-    updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
     boxType: {type: Sequelize.TEXT, field: 'box_type'},
     income1: {type: Sequelize.STRING},
     incAmt1: {type: Sequelize.DECIMAL(8,2), field: 'inc_amt1' },
@@ -77,7 +77,8 @@ const HouseholdModel = db.define('household', {
 const NeighborModel  = db.define('neighbor', {
     createdAt: false,
     updatedAt: false,
-    neighborID: {type: Sequelize.INTEGER, field: 'neighbor_id'},
+    createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
+    updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
     firstName: {type: Sequelize.STRING, field: 'first_name'},
     lastName: {type: Sequelize.STRING, field: 'last_name'},
     street: {type: Sequelize.STRING},
@@ -94,7 +95,7 @@ const NeighborModel  = db.define('neighbor', {
     houseRank: {type: Sequelize.INTEGER, field: 'house_rank'},
     openDate: {type: Sequelize.DATE, field: 'open_date'},
     closeDate: {type: Sequelize.DATE, field: 'close_date'},
-    proofOfResidencyType: {type: Sequelize.STRING, field: 'proof_of_residency_date'},
+    proofOfResidencyType: {type: Sequelize.STRING, field: 'proof_of_residency_type'},
     dateOfProof: {type: Sequelize.DATE, field: 'date_of_proof'},
     smokes: {type: Sequelize.BOOLEAN},
     encryptedSsn: {type: Sequelize.STRING, field: 'encrypted_ssn'},
@@ -108,7 +109,7 @@ const NeighborModel  = db.define('neighbor', {
     email: {type: Sequelize.STRING},
     apt: {type: Sequelize.STRING},
     done: {type: Sequelize.BOOLEAN},
-    birthDate: {type: Sequelize.DATE,field: 'bith_date' }
+    birthDate: {type: Sequelize.DATE,field: 'birth_date' }
 });
 
 HouseholdModel.hasMany(NeighborModel);
