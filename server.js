@@ -6,7 +6,6 @@ import resolvers from './data/resolvers';
 // const resolvers = {
 //   Query: {
 //     annoucement: () =>
-//       `Say hello to the new ApolloServer! A production ready GraphQL server with an incredible getting started experience`
 //   }
 // };
 
@@ -63,6 +62,7 @@ server.listen().then(({ url }) => {
 // import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 // import bodyParser from 'body-parser';
 // import schema from './data/schema';
+// import resolvers from './data/schema'; 
 // import { ApolloEngine } from 'apollo-engine';
 
 // const GRAPHQL_PORT = 3000;
@@ -74,7 +74,6 @@ server.listen().then(({ url }) => {
 
 // const graphQLServer = express();
 
-// graphQLServer.use(engine.expressMiddleware());
 // graphQLServer.use(compression());
 // graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 // graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));

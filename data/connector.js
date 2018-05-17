@@ -19,6 +19,7 @@ const db = new Sequelize({
 const HouseholdModel = db.define('household', {
     createdAt: false,
     updatedAt: false,
+    id: { type: Sequelize.INTEGER, primaryKey: true},
     createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
     updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
     householdName: { type: Sequelize.STRING, field: 'household_name'},
@@ -77,6 +78,7 @@ const HouseholdModel = db.define('household', {
 const NeighborModel  = db.define('neighbor', {
     createdAt: false,
     updatedAt: false,
+    id: { type: Sequelize.INTEGER, primaryKey: true},
     createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
     updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
     firstName: {type: Sequelize.STRING, field: 'first_name'},
@@ -112,10 +114,31 @@ const NeighborModel  = db.define('neighbor', {
     birthDate: {type: Sequelize.DATE,field: 'birth_date' }
 });
 
+const visitModel = db.define('visit',  {
+    createdAt: false,
+    updatedAt: false,
+    id: { type: Sequelize.INTEGER, primaryKey: true},
+    createdAt: {type: Sequelize.DATE, field: 'created_at'}, 
+    updatedAt: {type: Sequelize.DATE, field: 'updated_at'},
+    visitedOn:  {type: Sequelize.DATE, field: 'visited_on'},
+    itemsReceived: {type: Sequelize.TEXT, field: 'items_received'},
+    notes: {type: Sequelize.TEXT},
+    householdId: {type: Sequelize.INTEGER, field:'household_id'},
+    neighborId: {type: Sequelize.INTEGER, field: 'neighbor_id'},
+    starch: {type: Sequelize.STRING},
+    cereal: {type: Sequelize.STRING},
+    option1: {type: Sequelize.STRING},
+    option2: {type: Sequelize.STRING},
+    optionb: {type: Sequelize.BOOLEAN}
+});
+
 HouseholdModel.hasMany(NeighborModel);
 NeighborModel.belongsTo(HouseholdModel);
+visitModel.belongsTo(NeighborModel);
+visitModel.belongsTo(HouseholdModel);
+
 
 const Household = db.models.household;
 const Neighbor = db.models.neighbor;
-
-export { Household, Neighbor };
+const Visit    = db.models.visit;
+export { Household, Neighbor, Visit };
