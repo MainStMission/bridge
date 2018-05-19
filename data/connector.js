@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize';
 import _ from 'lodash';
 
+// Azure Connect String
+// postgres://{your_username}:{your_password}@{host_name}:5432/{your_database}?ssl=true
 
 const db = new Sequelize({
   database: 'db/pantry_development', 
