@@ -22,11 +22,15 @@ type Neighbor {
   firstName: String
   lastName: String
   household: Household
+}
+
+type Visit {
+
 }`
 ;
 
 const schema = makeExecutableSchema({ typeDefs });
 
-makeExecutableSchema({ typeDefs, resolvers })
+makeExecutableSchema({ typeDefs, resolvers }); 
 
 export default schema;

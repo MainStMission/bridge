@@ -2,21 +2,29 @@ import Sequelize from 'sequelize';
 import _ from 'lodash';
 
 // Azure Connect String
-// postgres://{your_username}:{your_password}@{host_name}:5432/{your_database}?ssl=true
+//  postgres://pantry@pantry-production:tmb8518$@pantry-production.postgres.database.azure.com:5432/pantry_production?ssl=true
 
-const db = new Sequelize({
-  database: 'db/pantry_development', 
-  username: 'tmb', 
-  password: null, 
-  host: 'localhost',
-  dialect: 'postgres',
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-});
+const db = new Sequelize( {
+    uri: postgres://pantry@pantry-production:tmb8518$@pantry-production.postgres.database.azure.com:5432/pantry_production',
+    options: {
+        native: true,
+        ssl: true
+    },
+    dialect: 'postgres'
+}); 
+
+
+// const db = new Sequelize({
+//     database: 'pantry_production', 
+//     username: 'pantry@pantry-production', 
+//     password: 'tmb8518$', 
+//     host: 'pantry-production.postgres.database.azure.com ',
+//     dialect: 'postgres',
+//     port: 5432,
+//     dialectOptions: {
+//         ssl: true
+//     }
+//  );
 
 const HouseholdModel = db.define('household', {
     createdAt: false,
